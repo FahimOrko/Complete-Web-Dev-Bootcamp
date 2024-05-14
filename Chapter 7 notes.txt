@@ -1,0 +1,76 @@
+
+Css hierarcy
+
+
+position
+li{
+3
+2
+1}
+
+
+Id
+attribute - li[dragab;e]
+class 
+element
+
+
+external
+internal
+inline
+
+!important - rule
+eg: color: red !important;
+
+
+two classes in one div 
+eg - <div class="box inner-box"> - two classes are separated by (_) space
+same can be set in css
+eg- .inner-box p { } - if we want to target the p element of the inner-box class
+
+
+combine Css selectors-
+to group stuff simply use coma
+eg- p,h1 {....}
+
+parent child selector-
+parent>child {...}
+eg- 
+`div
+`   p
+
+descendant combination
+Ancestor Descendent {...}
+eg -
+`div
+`   p
+`      h2
+
+
+chaining
+selectorselector
+h1.class#id .....
+
+
+combineing selectors
+selector selctorselector
+
+
+
+4 postions
+
+statc
+relative
+absolute - has z index
+fixed 
+
+
+
+
+
+
+
+
+
+
+

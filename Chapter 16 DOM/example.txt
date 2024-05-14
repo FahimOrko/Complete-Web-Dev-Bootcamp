@@ -1,0 +1,62 @@
+
+document.firstChild.firstElementChild;
+
+document.firstElementChild.lastElementChild.firstElementChild;
+
+var heading = document.firstElementChild.lastElementChild.firstElementChild;
+
+heading.innerHTML = "GoodBYe";
+
+heading.style.color = "blue";
+
+document.querySelector("input").click();
+
+
+
+document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;
+
+var change = document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;
+
+change.innerHTML = "DONE";
+
+
+
+
+document.getElementsByTagName("li")[2].style.color = "Green";
+
+document.getElementByIdName("").style.color = "Green";
+
+document.getElementsByClassName("btn")[0].style.color = "Green";
+
+document.querySelector("#id");
+
+document.querySelector("li a");  - hiearcy selectro
+
+document.querySelector("li.item");  
+
+document.querySelectorAll("li.item");  
+
+
+
+
+document.querySelector("button").style.backgroundColor = "Yellow";
+
+document.querySelector("button").classList.add("huge");
+
+document.querySelector("button").classList.remove("huge");
+
+document.querySelector("button").classList.toggle("invisible");
+
+
+
+
+document.querySelector("h1").innerHTML = "";
+
+document.querySelector("h1").textContent = "";
+
+
+
+
+document.querySelector("a").getAttribute("herf");
+
+document.querySelector("a").setAttribute("herf", "www.facebook.com");

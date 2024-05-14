@@ -1,0 +1,5 @@
+../eassay.docx 
+- (..) means go up a level of the current directory
+
+./dog.png 
+- (.) means so stay on the current directory

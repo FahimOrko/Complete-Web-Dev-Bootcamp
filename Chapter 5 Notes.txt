@@ -1,0 +1,21 @@
+for css =
+
+external
+inline
+internal
+
+Inside the head tag, we can use the link tag to set a rel to the css file with the html file. <link>
+
+
+
+class selector
+.class_name{}
+
+Id selector
+#Id_name{}
+
+attribute selector-
+p[attiribute_name]{}
+
+universal selector
+*{}

@@ -1,0 +1,22 @@
+span - is used to change inbetwen text and stuff
+
+display: block - full width
+display: inline - same line
+display: inlineblock - same line, can set width and height
+display: None - hides things
+
+float: left - so set img on side of things
+
+clear: left - to stop the attribute of the float element
+
+# responsive websites
+media querry
+css grid
+css flexbox
+bootstarp - eg extarnal framework
+
+
+media querry
+@media (max-widht: 600px){} - can use and/or operators
+
+@media screen(orientation: landscape){}

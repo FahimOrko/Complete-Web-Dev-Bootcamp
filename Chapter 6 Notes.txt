@@ -1,0 +1,26 @@
+
+
+color:
+background color:
+
+font-
+
+font size: px,em,rem
+font weight:  normal,bold,lighter,bolder,number
+font family:
+text align:
+
+
+border: 10px solid black;
+border-top:
+border-left:
+border-right:
+border-bottom:
+border-width: 1,1,1,1 - goes clockiwse `]_[
+
+ 
+padding: 20px (can accept multile values like border width)
+
+margin: 10 px (can accept multile values like border width)	
+
+div is like a box

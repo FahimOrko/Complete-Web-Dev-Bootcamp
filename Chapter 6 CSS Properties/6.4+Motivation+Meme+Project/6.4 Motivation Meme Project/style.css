@@ -1,0 +1,31 @@
+html{
+    background-color: black;
+}
+
+h1{
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+div{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+p{
+    color: white;
+    text-align: center;
+}
+
+img{
+    border: 5px solid white;
+    width: 100%;
+    font-family: 'Libre Baskerville', serif;
+    font-family: 'Roboto Mono', monospace;
+    margin-bottom: 30px;
+}

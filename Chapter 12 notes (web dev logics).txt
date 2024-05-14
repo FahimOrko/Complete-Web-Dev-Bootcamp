@@ -1,0 +1,17 @@
+
+UI Design -
+
+Color
+Layout
+Alingnment
+White space
+Audience
+
+	
+
+UX Design -
+
+Simplicity
+Concistency
+Reading layout ( F,Z pattern )
+All platform design

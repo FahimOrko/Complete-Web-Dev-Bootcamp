@@ -1,0 +1,9 @@
+npm init     // to intialize npm
+npm install <something>  / nmp i <something>       // to install pacakges
+
+
+use -
+
+  "type": "module", 
+
+// in pacage json to use EJS modules

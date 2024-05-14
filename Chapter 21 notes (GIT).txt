@@ -1,0 +1,11 @@
+ls -a // list files and directory // list of all items in a folder 
+cd // change directory // to navigate
+cd .. // navigate back
+cd ~ // go to root directory
+mkdir // create new directory // creates new folder
+touch text.txt // creates new file
+start text.txt // opens the file
+code text.txt // opens file in deafutlt code editor
+rm text.txt // to remove the file
+rm * // delete all the files in a directory
+rm -r Orko // delete the compelte folder even if theres stuff inside it
