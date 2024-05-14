@@ -1,0 +1,405 @@
+
+Ejs is a templating language
+
+res.render("index.ejs", { dayType: "A weekday", advice: "Time to work hard"});
+
+
+ejs tags --------------------
+
+--------------
+
+<% = var %>   --- need to pass in an object
+<% console.log() %>    ---- execute like an normal code in js terminal
+<%- <h1>Hello</h1> %>     ---- should be able to write html code here but for some reason not working
+<%%  %%>    ---- show <% %>
+<%#  %>    --- comment in ejes files
+<%- include("name.ejs")  %>   --- send ejs file
+
+--------------
+
+locals.fruits   ---- exp 4.2
+
+locals to see if data exicts
+
+--------------
+
+app.use(express.static("public"));
+
+
+--------------
+
+
+app.get("/", (req,res)=> {
+    res.render("index.ejs",
+        {
+            dayType: "A weekday",
+            advice: "Time to work hard"
+        }
+    );
+});
+
+
+-------------------------------------------
+
+Code snippets ----
+
+
+4.0 ----
+
+import express from "express";
+
+const app = express();
+const prot = 3000;
+
+// const daysOfTheWeek = ["Sunday", "Monday","Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+// const d = new Date();
+// let day = daysOfTheWeek[d.getDay()];
+
+// console.log(day);
+
+app.get("/", (req,res)=> {
+    const d = new Date();
+    let day = d.getDay();
+
+    if (day != 0 && day !=6  ){
+        res.render("index.ejs", {
+                dayType: "weekday",
+                advice: "Time to work hard"
+            }
+        );
+    } else {
+        res.render("index.ejs", {
+            dayType: "weeknd",
+            advice: "Time to rest"
+            }
+        );
+    };
+
+});
+
+app.listen(prot, ()=> {
+    console.log("Currently the server is running on the prot",prot);
+});
+
+
+
+--------
+
+
+import express from "express";
+// import bodyParser from "body-parser";
+
+const app = express();
+const port = 3000;
+
+app.get("/", (req,res)=>{
+    
+    const d = new Date();
+    let day = d.getDay();
+    let msg = { resposne : "" };
+
+    if(day===0 || day===6){
+        msg.resposne = "Its a weeknd, Time to party."
+    } else{
+        msg.resposne = "Its a weekday, Time to work."
+    };
+
+    res.render('index.ejs', msg);
+});
+
+app.listen(port, ()=>{
+    console.log(`Server running in port ${port}`)
+});
+
+
+
+4.1 -----------------
+
+index.ejs --
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS Tags</title>
+</head>
+
+<body>
+  <h1>
+    <!-- Tite goes here -->
+    <%= title %>
+  </h1>
+  <p>Current second:
+    <!-- Current second goes here -->
+    <%= seconds %>
+  </p>
+  <%  if (seconds % 2===0) {%>
+  <ul>
+    <!-- List goes here if current second is even. -->
+    <!-- Otherwise it should display the following: -->
+    <!-- <p>No items to display</p> -->
+    <% items.forEach((element) => {%>
+      <ul>
+        <li><%- element; %></li>
+      </ul>
+    
+    <% });%>
+    
+  </ul> 
+  <%  } else { %>
+  <p>No items to display</p>
+  <% }%>
+  <p>
+    <!-- HTML content goes here -->
+    <%-htmlContent %>
+  </p>
+
+  <!-- Footer goes here -->
+  <%- include("footer.ejs");  %>
+</body>
+
+</html>
+
+
+
+
+index.js ---
+
+
+import express from "express";
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  const data = {
+    title: "EJS Tags",
+    seconds: new Date().getSeconds(),
+    items: ["apple", "banana", "cherry"],
+    htmlContent: "<strong>This is some strong text</strong>",
+  };
+  res.render("index.ejs", data);
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+
+
+4.2 -----------------
+
+
+
+index.ejs ----
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name Letters</title>
+</head>
+
+<body>
+  <!-- Write your code here -->
+  <h1><%= sentence %></h1>
+
+  <form action="/submit" method="POST">
+    <input type="text" name="fName" placeholder="First name">
+    <input type="text" name="lName" placeholder="Last name">
+    <input type="submit" value="OK">
+  </form>
+
+</body>
+
+</html>
+
+
+
+
+
+index.js ---
+
+
+import express from "express";
+import bodyParser from "body-parser";
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+let string = {sentence: "Enter your name below!"};
+
+app.get("/", (req, res) => {
+  res.render("index.ejs", string);
+});
+
+app.post("/submit", (req, res) => {
+  var name = req.body["fName"] + req.body["lName"];
+  string.sentence = `Your name has ${name.length} letters to it`;
+  res.render("index.ejs", string);
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
+
+4.3 -----------------
+
+index.ejs ---
+
+<%- include("partials/header.ejs") %>
+
+
+  <h1>Home Page</h1>
+
+  <p>Lorem ipsum dolor sit amet, et proin, justo mus. Porta suspendisse turpis netus sagittis tortor at, vitae aliquet
+    pharetra cras velit, id gravida, neque nulla lorem, posuere hac. Ultricies eget lacus vehicula, in ante aliquam
+    et,facilisis tempor duis orci. Sed molestie sem in duis eu id, nisl id ultricies metus blandit eget praesent, pede
+    tempornullam, vitae arcu tortor suspendisse nibh risus. Nulla id suscipit reiciendis nulla erat. Porta enim aute
+    luctus,ducimus sodales dolor.
+  </p>
+  <p>
+    Quam purus justo enim purus, dolor enim, ut eu lectus nam eget nibh. Ante illum nullam leo, vivamus aliquam massa
+    massainceptos fermentum porttitor, blandit vehicula, lorem in placerat ut aliquam at sociosqu. Vivamus duis
+    ultricies
+    aliquam placerat, tincidunt scelerisque imperdiet, egestas erat vel. Libero rerum. Donec ligula tristique, purus
+    montes,
+    feugiatid nunc in a nec. Duis odio, vitae sed etiam mi massa, laoreet amet purus amet rhoncus, eget sed, arcu
+    urna.
+    Maecenaswisi id, at donec enim. Proin nisl, pulvinar leo suspendisse, cum parturient non, congue leo et ut in,
+    neque ut
+    lacusauctor quam fermentum urna. Metus quis, mauris dictum aptent ultrices nulla viverra ornare, tempor elit enim
+    leo
+    donec,sed sed. Vivamus sapien facilisi, tempor arcu nulla justo sed et, eget suspendisse lacus sed nunc mattis
+    lectus.
+    Metusgravida.</p>
+
+<%- include("partials/footer.ejs") %>
+
+
+
+
+index.js ---
+
+
+
+import express from "express";
+
+const app = express();
+const port = 3000;
+
+/* Write your code here:
+Step 1: Render the home page "/" index.ejs
+Step 2: Make sure that static files are linked to and the CSS shows up.
+Step 3: Add the routes to handle the render of the about and contact pages.
+  Hint: Check the nav bar in the header.ejs to see the button hrefs
+Step 4: Add the partials to the about and contact pages to show the header and footer on those pages. */
+
+// 1
+
+app.use(express.static("public"));
+
+app.get("/", (req,res) => {
+
+  res.render("index.ejs");
+
+});
+
+
+app.get("/about",(req,res)=>{
+
+  res.render("about.ejs");
+
+});
+
+
+app.get("/contact",(req,res)=>{
+
+  res.render("contact.ejs");
+
+});
+
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
+
+4.4 -----------------
+
+header.ejs --
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Add the link to the CSS stylesheet here -->
+  <!-- Hint: the link is relative to the public folder -->
+  <!-- <link rel="stylesheet" href="/"> -->
+  <link rel="stylesheet" href="styles/main.css">
+  <title>Band Generator</title>
+</head>
+
+<body>
+  <main>
+
+
+
+index.ejs ----
+
+
+import express from "express";
+import bodyParser from "body-parser";
+import { render } from "ejs";
+
+const app = express();
+const port = 3000;
+
+//Step 3 - Make the styling show up.
+//Hint 1: CSS files are static files!
+//Hint 2: The header and footer are partials.
+//Hint 3: Add the CSS link in header.ejs
+//Step 4 - Add a dynamic year to the footer.
+//Hint: Google to find out how to get the current year using JS.
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  //Step 1 - Make the get route work and render the index.ejs file.
+  res.render("index.ejs");
+});
+
+app.post("/submit", (req, res) => {
+  //Step 2 - Make the generate name functionality work
+  //Hint: When the "Generate Name" button in index.ejs is clicked, it should hit up this route.
+  //Then:
+  //1. You should randomly pick an adjective from the const "adj" and a noun from const "noun",
+  //scroll down to see the two arrays.
+  //2. Send the index.ejs as a response and add the adjective and noun to the res.render
+  //3. Test to make sure that the random words display in the h1 element in index.ejs
+  var fName = adj[Math.floor(Math.random() * adj.length)];
+  var lName = noun[Math.floor(Math.random() * noun.length)];
+  var bandName = {name: fName + " " + lName};
+  res.render("index.ejs", bandName);
+});
+
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+const adj =
+  

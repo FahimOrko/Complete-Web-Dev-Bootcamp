@@ -1,0 +1,40 @@
+
+---------------------------
+
+Queery parameter
+
+Api querry - https://bored-api.appbrewery.com/filter?type=education
+
+https://bored-api.appbrewery.com/filter?type=social&participants=2
+
+after filter you can give key value pairs to filter the responses files you might want to get 
+and & used if there is more than one type of key val responses you might want to get
+
+
+
+Path parameter
+
+to find some specific reserouse
+
+api queery - https://bored-api.appbrewery.com/activity/3943506
+
+Returns the activity with the specified key.
+
+
+
+URL Parameters:
+
+key: The unique key of the activity.
+
+gives back a selected json file unique to the path
+
+
+---------------------------
+
+
+API Authentication
+
+4 sstages
+
+
+

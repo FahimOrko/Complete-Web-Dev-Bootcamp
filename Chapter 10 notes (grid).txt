@@ -1,0 +1,54 @@
+
+.container{
+display: grid;
+grid-templates-colums: 1fr 2fr (fr - fraction, mainly used to describe the number of colums are going to be created)
+grid-templates-rows: 1fr 1fr (fr - fraction, mainly used to describe the number of rows are going to be created)
+gap: 10px
+}
+
+gird-templetes: rows/columns
+grid-templetes: 100px 100px/ 200px 200px
+
+
+grid-templete-colums: 100px auto (100% width fit)
+grid-tempelte-rows: 100px auto
+(fits the content size)
+
+
+grid-templete-colums: 1fr 2fr
+grid-tempelte-rows: 1fr 2fr
+(fr - fractional sizes, so the first is always the twice of second, fills up accdoing to text size)
+
+
+grid-templete-colums: 100px minmax(200px,800px)
+(minmax - fucntion - is relative to the screen size, when there enough spcae width is 800px and wehn not width is 200px)
+
+
+grid-templetes-rows: repeat(number of times, size)
+(eaiser way for chess bord)
+
+
+grid-auto-rows: 300px
+(after you write a code for 2x2 grid, if you add new rows theri size will be 300px)
+
+------------------------------------
+
+grid-
+lines
+tracks
+cells
+containers
+items
+
+
+grid-colum: span 2;
+grid-column-start: 1;
+grid-column-end: 2;
+
+same for row;
+
+order: 1;
+
+grid-area: grid-row-start/ grid-column-start/ grid-row-end/ grid-column-end
+(to set a object specificly on a grid)
+

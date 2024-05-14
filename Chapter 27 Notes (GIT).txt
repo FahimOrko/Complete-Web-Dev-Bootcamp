@@ -1,0 +1,12 @@
+
+git init    - intialize git
+git add .   - to add all imtes in the folder
+git commit -m "msg"     - to commit the changes
+git status    - to see status 
+git diff "file name"    - to see the diffrence with prev version
+git checkout "file name"    - to restore a file to last checkpoint
+
+
+pushing code online 
+
+git remote add origin link      - origin is a name

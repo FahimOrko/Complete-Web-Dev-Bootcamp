@@ -1,0 +1,284 @@
+
+document.firstChild.firstElementChild;
+
+document.firstElementChild.lastElementChild.firstElementChild;
+
+var heading = document.firstElementChild.lastElementChild.firstElementChild;
+
+heading.innerHTML = "GoodBYe";
+
+heading.style.color = "blue";
+
+document.querySelector("input").click();
+
+
+// ----------------------------------------------------------------------
+
+
+document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;
+
+var change = document.firstElementChild.lastElementChild.lastElementChild.lastElementChild;
+
+change.innerHTML = "DONE";
+
+
+// ----------------------------------------------------------------------
+
+
+
+document.getElementsByTagName("li")[2].style.color = "Green";
+
+document.getElementByIdName("").style.color = "Green";
+
+document.getElementsByClassName("btn")[0].style.color = "Green";
+
+document.querySelector("#id");
+
+document.querySelector("li a");  - hiearcy selectro
+
+document.querySelector("li.item");  
+
+document.querySelectorAll("li.item");  
+
+
+
+// ----------------------------------------------------------------------
+
+
+document.querySelector("button").style.backgroundColor = "Yellow";
+
+document.querySelector("button").classList.add("huge");
+
+document.querySelector("button").classList.remove("huge");
+
+document.querySelector("button").classList.toggle("invisible");
+
+
+
+// ----------------------------------------------------------------------
+
+
+document.querySelector("h1").innerHTML = "";
+
+document.querySelector("h1").textContent = "";
+
+
+
+// ----------------------------------------------------------------------
+
+
+document.querySelector("a").getAttribute("herf");
+
+document.querySelector("a").setAttribute("herf", "www.facebook.com");
+
+
+// ----------------------------------------------------------------------
+
+
+event listner 
+
+document.querySelector("button").addEventListener("click", handleClick);
+
+debugger;
+calculator(num1,num2,operator);
+
+
+
+higer oreder function - functions that can take functions as an input
+
+
+
+
+
+// ----------------------------------------------------------------------
+
+
+
+function add( num1, num2 ){
+    return num1 + num2;
+}
+
+
+function substact( num1, num2 ){
+    return num1 - num2;
+}
+
+
+function multiply( num1, num2 ){
+    return num1 * num2;
+}
+
+function divide( num1, num2 ){
+    return num1 / num2;
+}
+
+function calc ( num1, num2, operator ){
+    return operator( num1, num2 );
+}
+
+// ----------------------------------------------------------------------
+
+
+debugger 
+calc(10,5,multiply);
+
+
+// ----------------------------------------------------------------------
+
+
+var housekeeper = {
+    name: "Jhon", 
+    yearOfExp: 10,
+    skills: ["cleaing"]
+}
+
+
+// ----------------------------------------------------------------------
+
+// constructor funtion 
+
+function Bellboy(name,age,profession,skills) {
+    this.name = name;
+    this.age = age;
+    this.profession = profession;
+    this.skills = skills;
+}
+
+var bellboy1 = new Bellboy("timy",19,cleaner,["moping,dusting"]);
+
+
+// ----------------------------------------------------------------------
+
+// almost like if statement but better 
+
+switch (this.innerHTML) {
+    case "w":                // this is like if - this.innerHTML == "w"
+        var crash = new Audio("./sounds/crash.mp3");
+        crash.play();
+        break;
+
+    default:
+        break;
+}
+
+
+// ----------------------------------------------------------------------
+
+// mehtod
+
+function Bellboy(name,age,profession,skills) {        // constructor funtion 
+    this.name = name;           
+    this.age = age;
+    this.profession = profession;
+    this.skills = skills;
+    this.cleanTheRomm = function(){                 // method
+        clean()
+    }
+
+    this.clean = function clean(){                  // // method
+        alert("Cleaning in progress");
+    }
+}
+
+
+// ----------------------------------------------------------------------
+
+
+
+$("h1").css("color","red"); // setting the color
+
+$("h1").css("color"); // getting the color
+
+$("button").addClass("big-text"); // add class
+
+$("button").removeClass("big-text"); // remove class
+
+$("button").hasClass("big-text"); // gives true of flase answer
+
+$("button").text("Dont click me") // to change inner innerHTML
+
+$("button").html("<em>Click me</em>") // to change the html code
+
+$("a").attr("href"); // to get the value of a herf (https://www.google.com)
+
+$("a").attr("href","https://www.facebook.com/"); // to set the value of a herf (https://www.facebook.com)
+
+$("a").attr("class"); // get all the classes of attribute a
+
+console.log($("a").attr("class")); // get all the classes of attribute a
+
+
+// ----------------------------------------------------------------------
+
+for (var i = 0 ; i<5 ; i++){                                                                       // vanilla javascript
+    document.querySelectorAll("button")[i].addEventListener("click", function(){
+        document.querySelector("h1").style.color = "black";
+    });
+};              
+
+// ----------------------------------------------------------------------
+
+$("button").click(function(){                                                                      // j querry
+    $("h1").css("color","white");
+});
+
+
+// ----------------------------------------------------------------------
+
+$("button").click(function(){                               // event listner shorten
+    $("h1").css("color","white");
+});
+
+
+$(document).keypress(function(event){                        // event listner shorten
+    $("h1").text(event.key);
+});
+
+
+$("h1").on("mouseover", function(){                         // even shorter version of event listner
+    $("button").css("background-color", "black");
+    $("button").css("color", "white");
+});
+
+
+// ----------------------------------------------------------------------
+
+
+$("h1").before("<button>New</button>").addClass("xyz");                     // adds html item
+$("h1").after("<button>New</button>").addClass("xyz");                      // adds html item
+$("h1").append("<button>New</button>").addClass("xyz");                     // adds html item
+$("h1").prepend("<button>New</button>").addClass("xyz");                    // adds html item
+$("button").remove();                                                       // removes all the buttons
+
+
+// ----------------------------------------------------------------------
+
+$("button").on("click" , function(){                                           // hide and show h1 onclick
+    $("h1").hide();
+
+    setTimeout(function() {
+        $("h1").show();
+    }, 1000);
+
+});
+
+
+$("button").on("click" , function(){                                           // hide and show h1 onclick toggole
+    $("h1").toggle();
+});
+
+
+$("button").on("click" , function(){                                           // fade in and out h1 onclick toggole
+    // $("h1").fadeOut();
+    // $("h1").fadeIn();
+    $("h1").fadeToggle();
+});
+
+
+$("button").on("click" , function(){                                           // slide in and out h1 onclick toggole
+    // $("h1").slideUp();
+    // $("h1").slideDown();
+    $("h1").slideToggle();
+});
+
+// ----------------------------------------------------------------------
