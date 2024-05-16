@@ -1,12 +1,20 @@
 
-git init    - intialize git
-git add .   - to add all imtes in the folder
-git commit -m "msg"     - to commit the changes
-git status    - to see status 
-git diff "file name"    - to see the diffrence with prev version
+git init                    - intialize git
+git add .                   - to add all imtes in the folder
+git commit -m "msg"         - to commit the changes
+git status                  - to see status 
+git log                     - to see the commits made
+git diff "file name"        - to see the diffrence with prev version
 git checkout "file name"    - to restore a file to last checkpoint
+git rm --cached -r .        - removes everything from the git staging area
 
 
 pushing code online 
 
 git remote add origin link      - origin is a name
+git push -u origin main         - push something in the github
+
+touch .gitignore                - Create a git ingnore files so that you can add stuff there which you want to ignore after pushing public
+code .gitignore                 - to open the gitignore file
+
+git clone url                   - clone repos
