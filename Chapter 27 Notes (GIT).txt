@@ -18,3 +18,8 @@ touch .gitignore                - Create a git ingnore files so that you can add
 code .gitignore                 - to open the gitignore file
 
 git clone url                   - clone repos
+git branch "name"               - to create a new git branch
+git checkout "name"             - to switch branches
+git branch                      - to see which branches are exist
+
+
