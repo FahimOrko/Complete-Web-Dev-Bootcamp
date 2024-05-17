@@ -34,7 +34,13 @@ gives back a selected json file unique to the path
 
 API Authentication
 
-4 sstages
+4 stages
+
+No Authentication
+Basic Authentication
+Api based Authorization
+Token based Authentication
+
 
 
 
