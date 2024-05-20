@@ -26,3 +26,7 @@ git merge "name"                - to merge the current branch with the name of t
 
 
 
+git reset --hard HEAD~1         - Delets local git head
+git push origin HEAD --force    - Delete head thats already been pushed 
+
+

@@ -31,6 +31,26 @@ gives back a selected json file unique to the path
 
 ---------------------------
 
+Axios
+
+
+app.get("/", async (req, res) => {
+  try {
+    const response = await axios.get("https://bored-api.appbrewery.com/random");
+    const result = response.data;
+    // console.log(result);
+    res.render("index.ejs", { data: result });
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: error.message,
+    });
+  }
+});
+
+
+---------------------------
+
 
 API Authentication
 
@@ -41,6 +61,60 @@ Basic Authentication
 Api based Authorization
 Token based Authentication
 
+
+---------------------------
+
+Rest Apis
+
+POST
+
+  const body = req.body;
+  // console.log(body);
+  try {
+    const result = await axios.post(API_URL + "/secrets/" , body, config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
+  }
+
+
+PUT
+
+  const searchId = req.body.id;
+  const body = req.body;
+  // TODO 3: Use axios to PUT the data from req.body to the secrets api servers.
+  try {
+    const result = await axios.put(API_URL + "/secrets/" + searchId, body, config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
+  }
+
+
+PATCH
+
+  const searchId = req.body.id;
+  const body = req.body;
+  // TODO 4: Use axios to PATCH the data from req.body to the secrets api servers.
+  try {
+    const result = await axios.patch(API_URL + "/secrets/" + searchId, body, config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
+  }
+
+DELETE
+
+  const searchId = req.body.id;
+  // TODO 5: Use axios to DELETE the item with searchId from the secrets api servers.
+  try {
+    const result = await axios.delete(API_URL + "/secrets/" + searchId, config);
+    res.render("index.ejs", { content: JSON.stringify(result.data) });
+  } catch (error) {
+    res.render("index.ejs", { content: JSON.stringify(error.response.data) });
+  }
+
+---------------------------
 
 
 
