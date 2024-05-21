@@ -1,0 +1,138 @@
+
+------------------------------------------
+
+find            - to find something
+const specificJoke = jokes.find((joke)=> joke.id == index);
+
+findIndex       - to find the index
+const jokeIndex = jokes.findIndex((joke) => joke.id == id);
+
+filter          - to filer things out in a array
+const specificJoke = jokes.filter((joke)=> joke.jokeType == type);
+
+splice          - to delete an index
+jokes.splice(jokeIndex,1)
+
+------------------------------------------
+
+hit up a random endpoint --
+
+app.get("/random", (req,res)=> {
+  const randomJoke = jokes[Math.floor(Math.random()*jokes.length)];
+  // console.log(randomJoke);
+  res.json(randomJoke);
+});
+
+
+-------------------------------------------
+
+hit up an endpoint , where the prameter has an id and you have to access it
+
+app.get("/jokes/:id", (req,res)=> {
+  const id = (req.params.id);           // get the id from req pramas, this is req prams "/jokes/:id" - mainly paramter of request 
+  const index = parseInt(id);         // converts to int   
+  const specificJoke = jokes.find((joke)=> joke.id == index);
+  // console.log(specificJoke);
+  res.json(specificJoke);
+});
+
+
+-------------------------------------------
+
+hit up a queery endpoint, where the paramter has parameter has an filter option
+
+app.get("/filter", (req,res)=> {
+  const type = (req.query.type);           // get the type from req qurrey, this is req querry "/filter?type="something" - mainly paramter of request
+  const specificJoke = jokes.filter((joke)=> joke.jokeType == type);
+  res.json(specificJoke);
+});
+
+-------------------------------------------
+
+POST a new joke
+
+app.post("/jokes", (req,res)=> {
+  const newJoke = {
+    id: (jokes.length + 1),
+    jokeText : req.body.text,
+    jokeType : req.body.type
+  }
+  jokes.push(newJoke);
+  // console.log(jokes.slice(-1));
+  res.json(newJoke);
+});
+
+
+-------------------------------------------
+
+PUT a joke
+
+app.put("/jokes/:id", (req,res)=> {
+  const id = req.params.id;
+  // const text = req.query.text;
+  // const type = req.query.type;
+  const specificJokeIndex = jokes.findIndex((joke)=> joke.id == id);
+  var updateJoke = {
+    id : id,
+    jokeText : req.body.text,
+    jokeType : req.body.type
+  }
+  jokes[specificJokeIndex] = updateJoke
+  res.json(updateJoke);
+});
+
+-------------------------------------------
+
+PATCH a joke
+
+app.patch("/jokes/:id", (req,res)=> {
+  const id = req.params.id;
+  // const text = req.query.text;
+  // const type = req.query.type;
+  const specificJoke = jokes.find((joke)=> joke.id == id);
+  var updateJoke = {
+    id : id,
+    jokeText : req.body.text || specificJoke.jokeText,
+    jokeType : req.body.type || specificJoke.jokeType
+  }
+  const specificJokeIndex = jokes.findIndex((joke)=> joke.id == id);
+  jokes[specificJokeIndex] = updateJoke
+  res.json(updateJoke);
+});
+
+
+-------------------------------------------
+
+DELETE Specific joke
+
+app.delete("/jokes/:id", (req,res)=>{
+  const id = req.params.id;
+  const jokeIndex = jokes.findIndex((joke) => joke.id == id);
+  if (jokeIndex>-1){
+    jokes.splice(jokeIndex,1)
+    res.sendStatus(200);
+  } else {
+    res
+      .status(400)
+      .json({error: `Joke with id: ${id} not found`});
+  };
+});
+-------------------------------------------
+
+DELETE All jokes
+
+app.delete("/all", (req,res)=>  {
+  const userKey = req.query.key;
+  if (userKey === masterKey){
+    jokes = [];
+    res.sendStatus(200);
+  } else {
+    res
+      .status(404)
+      .json({error: `You are not authorized`})
+  };
+});
+
+-------------------------------------------
+
+-------------------------------------------
